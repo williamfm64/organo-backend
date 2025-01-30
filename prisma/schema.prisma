@@ -16,7 +16,7 @@ datasource db {
 model Coworker {
   id      String   @id @default(auto()) @map("_id") @db.ObjectId
   name    String
-  role    String
-  image   String?
-  team    Int
+  position    String
+  image   String
+  team    String
 }
