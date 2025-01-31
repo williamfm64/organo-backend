@@ -53,7 +53,47 @@ app.delete('/coworkers/:id', async (req, res) => {
             id: req.params.id
         }
     })
-    res.status(200).json({ message: "Usuário foi deletado com sucesso." })
+    res.status(200).json({ message: "Coworker was deleted succesfuly" })
+})
+
+app.get('/teams', async (req, res) => {
+
+    const data = await prisma.team.findMany()
+
+    res.status(200).json(data)
+
+})
+
+app.post('/teams', async (req, res) => {
+    await prisma.team.create({
+        data: {
+            name: req.body.name,
+            color: req.body.color
+        }
+    })
+    res.status(201).json(req.body)
+})
+
+app.delete('/teams/:id', async (req, res) => {
+    await prisma.team.delete({
+        where: {
+            id: req.params.id
+        }
+    })
+    res.status(200).json({ message: "Team was deleted succesfuly" })
+})
+
+app.patch('/teams/:id', async (req, res) => {
+    await prisma.team.update({
+        where: {
+            id: req.params.id
+        },
+        data: {
+            name: req.body.name,
+            color: req.body.color
+        }
+    })
+    res.status(201).json(req.body)
 })
 
 app.listen(3001)

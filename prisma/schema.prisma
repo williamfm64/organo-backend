@@ -20,3 +20,9 @@ model Coworker {
   image   String
   team    String
 }
+
+model Team {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  name    String
+  color   String
+}
