@@ -14,15 +14,17 @@ datasource db {
 }
 
 model Coworker {
-  id      String   @id @default(auto()) @map("_id") @db.ObjectId
-  name    String
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
   position    String
-  image   String
-  team    String
+  image       String  ? @default("https://cdn.dribbble.com/users/2623393/screenshots/6668765/mini4.png")
+  isDefault   Boolean   @default(false)
+  teamKey     String    
 }
 
 model Team {
-  id      String   @id @default(auto()) @map("_id") @db.ObjectId
-  name    String
-  color   String
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  color       String
+  isDefault   Boolean  @default(false)
 }

@@ -18,7 +18,7 @@ app.post('/coworkers', async (req, res) => {
             name: req.body.name,
             position: req.body.position,
             image: req.body.image,
-            team: req.body.team
+            teamKey: req.body.teamKey
         }
     })
     res.status(201).json(req.body)
@@ -81,7 +81,16 @@ app.delete('/teams/:id', async (req, res) => {
         }
     })
     res.status(200).json({ message: "Team was deleted succesfuly" })
+    deleteMany(req.params.id)
 })
+
+async function deleteMany(teamKey) {
+    await prisma.coworker.deleteMany({
+        where: {
+            teamKey: teamKey
+        }
+    })
+}
 
 app.patch('/teams/:id', async (req, res) => {
     await prisma.team.update({
