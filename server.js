@@ -41,7 +41,8 @@ app.patch('/coworkers/:id', async (req, res) => {
             name: req.body.name,
             position: req.body.position,
             image: req.body.image,
-            team: req.body.team
+            team: req.body.team,
+            isFavorite: req.body.isFavorite
         }
     })
     res.status(201).json(req.body)

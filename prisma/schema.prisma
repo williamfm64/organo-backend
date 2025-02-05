@@ -20,6 +20,7 @@ model Coworker {
   image       String  ? @default("https://cdn.dribbble.com/users/2623393/screenshots/6668765/mini4.png")
   isDefault   Boolean   @default(false)
   teamKey     String    
+  isFavorite  Boolean   @default(false)
 }
 
 model Team {
