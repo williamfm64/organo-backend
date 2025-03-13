@@ -4,9 +4,11 @@ import { PrismaClient } from '@prisma/client'
 
 import cors from 'cors'
 
+const PORT = process.env.PORT || 4000;
+
 const app = express()
 
-app.use(cors(''))
+app.use(cors())
 
 const prisma = new PrismaClient()
 
@@ -106,4 +108,8 @@ app.patch('/teams/:id', async (req, res) => {
     res.status(201).json(req.body)
 })
 
-app.listen(3001)
+app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
+});
+
+export default app;
